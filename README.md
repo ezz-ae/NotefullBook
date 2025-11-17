@@ -1,55 +1,52 @@
 # NotefullBook OS
 
-A GitHub-ready research repository for:
+NotefullBook OS is a **Personal AI Thought Engine** built on the **Forgetting Core Thinking (FCT)** framework.
 
-> **NotefullBook OS: A Technical Whitepaper on a Personal AI Thought Engine Built on the Forgetting Core Thinking (FCT) Framework**
+This repo is a *developer-ready reference implementation* of the core ideas:
 
-This repo is structured for **practical use**:
+- Memory as **reconstruction and relocation**, not archival replay.
+- Safety by **architectural forgetting**, not just external policy.
+- Learning from **behavioral frequency** (what you return to), not content.
+- Cognitive loop: **Lighting → Observation → Forgetting → Simplification → Re‑activation**.
 
-- `/docs` – human-readable whitepaper in Markdown, plus architecture notes.
-- `/latex` – academic-style LaTeX version (conference/journal-ready header).
-- `/figures` – placeholder directory for diagrams and system charts.
-- `/.github/workflows` – optional CI to compile the LaTeX paper into PDF.
+## Structure
 
-You can:
+- `src/fct/` — FCT core types and reasoning utilities.
+- `src/notebookml/` — NotebookML minimal interpreter and runtime hooks.
+- `src/engines/`
+  - `clb.ts`  — Cognitive Lighting Backend
+  - `sinlm.ts` — Schema Intelligence Network Learning Mechanism
+  - `cse.ts`  — Cognitive Simplification Engine
+  - `afa.ts`  — Active Forgetting Artifact module
+- `src/os/`
+  - `behaviorLog.ts` — privacy‑centric behavioral logging layer
+  - `cognitiveLoop.ts` — closed‑loop orchestration of CLB, SINLM, CSE, AFA
+  - `index.ts` — NotefullBookOS façade
+- `docs/`
+  - `whitepaper.md` — full NotefullBook OS whitepaper text
+  - `architecture.md` — high‑level architecture and sequence diagrams (text description)
+- `examples/`
+  - `demoNotebook.ts` — minimal CLI demo of the cognitive loop
 
-- Publish the Markdown version directly on GitHub.
-- Use the LaTeX version for conference or journal submission.
-- Extend `/docs` with additional modules (safety, economics, OS design, API specs).
+This is **TypeScript‑first**, framework‑agnostic. You can:
+- plug it into a Node backend,
+- wrap it in a desktop app,
+- or bind it to any UI (web / mobile) as the cognitive engine behind a NotefullBook client.
 
----
+## Quick Start
 
-## Repository Structure
-
-```text
-notefullbook-os/
-├─ README.md
-├─ docs/
-│  ├─ whitepaper.md
-│  └─ architecture-notes.md
-├─ latex/
-│  ├─ main.tex
-│  └─ sections/
-│     ├─ intro.tex
-│     ├─ fct.tex
-│     ├─ architecture.tex
-│     ├─ safety.tex
-│     └─ conclusion.tex
-├─ figures/
-│  ├─ clb-loop.pdf        # Cognitive Lighting Backend loop (placeholder)
-│  ├─ fct-stack.pdf       # FCT cognitive stack
-│  └─ os-architecture.pdf # High-level OS diagram
-└─ .github/
-   └─ workflows/
-      └─ latex.yml
+```bash
+npm install
+npm run build
+node dist/examples/demoNotebook.js
 ```
 
----
+This will run a small demo that:
 
-## How to use
+1. Creates a notebook.
+2. Logs behavioral events (frequency, return‑rate, drift).
+3. Lets the engines compute a *schema survival* view.
+4. Applies active forgetting + simplification.
+5. Prints out the simplified “surviving schemas”.
 
-- Edit `docs/whitepaper.md` as the **source of truth** for the narrative.
-- Keep LaTeX sections in sync when you prepare an academic submission.
-- Add real diagrams into `figures/` and reference them from LaTeX.
-
-The repo is intentionally minimal, so you can plug it into any wider ecosystem (AIXSELF / NotefullBook / safety research) without refactoring.
+The implementation is intentionally simple and transparent — the goal is clarity of **safety + memory logic**, not ML sophistication.
