@@ -1,0 +1,14 @@
+\section{System Architecture}
+
+NotefullBook OS is organized around a Cognitive Lighting Backend (CLB) and three key modules: the Schema Intelligence Network Learning Mechanism (SINLM), the Forgetting Artifact Module (AFA), and the Cognitive Simplification Engine (CSE).
+
+The CLB activates nodes on demand, mapping associations instead of files. SINLM observes behavioral signals---frequency, return-rate, drift, and persistence---to compute schema survival scores without inspecting content. AFA and CSE work together to erode raw data into artifacts and to simplify the cognitive space.
+
+Figure~\ref{fig:clb-loop} sketches the closed loop: activation, observation, decay, and simplification.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth]{../figures/clb-loop.pdf}
+  \caption{High-level CLB--SINLM--AFA--CSE loop.}
+  \label{fig:clb-loop}
+\end{figure}
